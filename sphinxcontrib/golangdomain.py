@@ -15,7 +15,7 @@ import string
 from docutils import nodes
 from docutils.parsers.rst import directives, Directive
 
-from sphinx import addnodes
+from sphinx import addnodes, version_info
 from sphinx.roles import XRefRole
 from sphinx.locale import _
 
@@ -51,6 +51,13 @@ go_func_split_re = re.compile(
     """,
     re.VERBOSE,
 )
+
+
+def _index_tuple(text, target, name):
+    if version_info < (1, 4):
+        return ("single", text, target, name)
+    else:
+        return ("single", text, target, name, None)
 
 
 class GolangObject(ObjectDescription):
@@ -262,7 +269,7 @@ class GolangObject(ObjectDescription):
 
         indextext = self._get_index_text(name)
         if indextext:
-            self.indexnode["entries"].append(("single", indextext, name, name))
+            self.indexnode["entries"].append(_index_tuple(indextext, name, name))
 
 
 class GolangPackage(Directive):
@@ -307,7 +314,7 @@ class GolangPackage(Directive):
         if not noindex:
             indextext = _("%s (package)") % pkgname
             inode = addnodes.index(
-                entries=[("single", indextext, "package-" + pkgname, pkgname)]
+                entries=[_index_tuple(indextext, "package-" + pkgname, pkgname)]
             )
             ret.append(inode)
         return ret

@@ -8,15 +8,7 @@
 You can install the package from source using the setup.py file.
 
 ```
-git clone https://github.com/chrisdoherty4/sphinxcontrib-golangdomain
-cd sphinxcontrib-golangdomain
-pip install .
-```
-
-From PyPi:
-
-```
-pip install <TODO>
+pip3 install git+https://github.com/figroc/sphinxcontrib-golangdomain
 ```
 
 ## License

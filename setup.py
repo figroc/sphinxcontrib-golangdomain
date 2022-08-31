@@ -13,9 +13,9 @@ requires = ["Sphinx>=1.0"]
 
 setup(
     name="sphinxcontrib-golangdomain",
-    version="0.2.0",
-    url="https://github.com/jrabinow/sphinxcontrib-golangdomain",
-    download_url="https://github.com/jrabinow/sphinxcontrib-golangdomain",
+    version="0.3.0",
+    url="https://github.com/figroc/sphinxcontrib-golangdomain",
+    download_url="https://github.com/figroc/sphinxcontrib-golangdomain",
     license="BSD",
     author="Yoshifumi YAMAGUCHI",
     author_email="ymotongpoo at gmail.com",
