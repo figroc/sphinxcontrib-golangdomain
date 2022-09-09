@@ -513,7 +513,8 @@ class GolangDomain(Domain):
             else:
                 fullname = "(%s.%s) %s" % (pkgname, typ, funcname)
 
-        return fullname, self.data["functions"][fullname][0]
+        f = self.data["functions"].get(fullname)
+        return fullname, f[0] if f else None
 
     def _find_obj(self, env, pkgname, name, typ):
         """Find a Go object for "name", perhaps using the given package.
